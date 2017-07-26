@@ -1,0 +1,61 @@
+{% extends 'index.html' %} {% block content %} {% if 'username' in session %}
+
+<div class="container apps">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3 panel education">
+      <form method="post" class="form-horizontal" action="#">
+        <div class="inner">
+          <div>
+            <fieldset class="form-group">
+              <label for="">Company Name</label>
+              <input type="text" class="form-control" name="company_name" {% if type=='edit' %} value="{{app.company_name}}" {% endif %}>
+            </fieldset>
+          </div>
+          <div>
+            <fieldset class="form-group">
+              <label for="">Date: </label>
+              <input type="date" class="form-control" name="date_apply" {% if type=='edit' %} value="{{app.date_apply}}" {% endif %}>
+          </div>
+          <div>
+            <fieldset class="form-group">
+              <label for="">Position</label>
+              <input type="text" class="form-control" name="position" {% if type=='edit' %} value="{{app.position}}" {% endif %}>
+          </div>
+          <fieldset class="form-group">
+            <label for="">Location:</label>
+            <input type="text" class="form-control" name="location" {% if type=='edit' %} value="{{app.location}}" {% endif %}>
+          </fieldset>
+          <fieldset class="form-group">
+            <label for="">Next Step:</label>
+            <input type="text" class="form-control" name="next_step" {% if type=='edit' %} value="{{app.next_step}}" {% endif %}>
+          </fieldset>
+          <fieldset class="form-group">
+            <label for="">Contact:</label>
+            <input type="text" class="form-control" name="contact" {% if type=='edit' %} value="{{app.contact}}" {% endif %}>
+          </fieldset>
+          <fieldset class="form-group">
+            <label for="">Where did you find this job?:</label>
+            <input type="text" class="form-control" name="job_board" {% if type=='edit' %} value="{{app.job_board}}" {% endif %}>
+          </fieldset>
+          <fieldset class="form-group">
+            <label for="">Notes:</label>
+            <input type="text" class="form-control" name="notes" {% if type=='edit' %} value="{{app.notes}}" {% endif %}>
+          </fieldset>
+          <div>
+            <div class="col-md-6">
+
+            </div>
+            <div class="col-md-6">
+              <input type="submit" class="btn btn-primary" value="Submit">
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>{% else %}
+<h1>You be here. Your IP has been logged</h1> {% endif %}
+</div>
+
+{% endblock %}
+

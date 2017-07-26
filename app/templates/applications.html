@@ -1,0 +1,35 @@
+{% extends 'index.html' %} {% import 'macros.html' as macros %} {% block content %}
+<section class='apps'>
+  <div class="containter">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="col-md-3"><strong>Company Name</strong>    
+	    <a href="{{url_for('app.sort_by_company')}}"><span class="glyphicon glyphicon-chevron-up"></span></a>
+
+
+	    <a href="{{url_for('app.sort_by_company_desc')}}"><span class="glyphicon glyphicon-chevron-down"></span></a>
+        </div>
+        <div class="col-md-1"><strong>Date</strong></div>
+        <div class="col-md-4"><strong>Position</strong></div>
+        <div class="col-md-3"><strong>Location</strong></div>
+        <div class="col-md-1"><strong>Actions</strong></div>
+      </div>
+      {% for app in applications %}
+      <div class="col-md-12">
+        <div class="col-md-3">{{ app.company_name}}</div>
+        <div class="col-md-1">{{ app.date_apply.strftime('%m-%d')}}</div>
+        <div class="col-md-4">{{ app.position}}</div>
+        <div class="col-md-3">{{ app.location}}</div>
+        <div class="col-md-1"><a href="{{url_for('app.more_info', app_id=app.id)}}" >More Info</a> 
+         </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  {% if 'username' in session %}
+  <a href="{{url_for('app.add_app')}}" class="btn btn-warning actions">Add</a> {% endif%}
+
+</section>
+{% endblock %}
+

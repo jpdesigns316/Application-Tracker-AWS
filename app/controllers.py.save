@@ -1,0 +1,44 @@
+from flask import Flask
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+import datetime
+from models import *
+
+app = Flask(__name__)
+app.config.from_object('config')
+app.secret_key = app.config['SECRET_KEY']
+
+
+def load_engine():
+    engine = create_engine(app.config['SQLALCHEMY_DATABASE_URI'])
+    return engine
+
+
+engine = load_engine()
+Base.metadata.bind = engine
+
+DBSession = sessionmaker(bind=engine)
+session = DBSession()
+
+
+def get_applications():
+    return session.query(Application).order_by(Application.date_apply).all()
+
+
+def get_application(id):
+    return session.query(Application).filter_by(id=id).one()
+
+
+def search_applications(start_date, end_date):
+
+    return qry
+
+
+def get_suggestions():
+    return session.query(Suggestions).all()
+
+
+def get_suggestion(id):
+    return session.query(Suggestions).filter_by(id=id).one()
+qry = DBSession.query(User).filter(User.birthday <= '1988-01-17').\
+        filter(User.birthday >= '1985-01-17')

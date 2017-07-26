@@ -1,0 +1,48 @@
+{% extends 'index.html' %} {% import 'macros.html' as macros %} {% block content %} {% if 'username' in session %}
+
+<div class="container apps">
+  <div class="row">
+    <div class="col-xs-12 col-md-6 col-md-offset-3 panel panel-default">
+      <legend>Add Applicaion</legend>
+      {% call macros.render_form(form, action_url=url_for('app.add_app'), action_text="Add Application", class_="form-horizontal") %}
+      <div class="col-md-6">
+        {{ macros.input(form.company_name, type='text') }}
+      </div>
+      <div class="col-md-6">
+        {{ macros.input(form.date_apply, type='date') }}
+      </div>
+      <div class="col-md-6">
+        {{ macros.input(form.position, type='select') }}
+      </div>
+      <div class="col-md-6">
+        {{ macros.input(form.location, type='text') }}
+      </div>
+      <div class="col-md-6">
+        {{ macros.input(form.next_step, type='text') }}
+      </div>
+      <div class="col-md-6">
+        {{ macros.input(form.contact, type='text') }}
+      </div>
+      <div class="col-md-12">
+        {{ macros.input(form.job_board, type='text') }}
+      </div>
+
+      <div class="col-md-12">
+        {{ macros.render_textarea(form.notes)}}
+      </div>
+      <div class="col-md-12 text-center">
+      {% endcall %}
+      </div>
+
+    </div>
+  </div>
+
+
+
+
+</div>{% else %}
+<h1>You be here. Your IP has been logged</h1> {% endif %}
+</div>
+
+{% endblock %}
+
